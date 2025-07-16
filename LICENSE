@@ -19,6 +19,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+<<<<<<< HEAD
 
 ---
 
@@ -29,3 +30,5 @@ Please refer to LilyGO's original licensing terms for hardware-related component
 THIRD-PARTY LIBRARIES:
 This project incorporates various open-source libraries, each with their own licenses.
 See the respective library folders for their individual license terms.
+=======
+>>>>>>> 7c887ea71b651027c1fc51398175d48d9bf71893
