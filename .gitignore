@@ -1,8 +1,59 @@
-.pio
-.vscode
-build
-script
-test
-SX126x_Transmit
-config
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+.platformio/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Build outputs
+build/
+.build/
+*.bin
+*.elf
+*.map
+
+# ESP32/Arduino
+*.tmp
+*.temp
+*.log
+firmware.bin
+
+# Security & Config
+config/
+secrets/
+*.key
+*.pem
+*.crt
+.env
+wifi_credentials.h
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+.cache/
+
+# Project specific
+SX126x_Transmit/
+script/
+test_output/
+
+# Documentation builds
+docs/_build/
+docs/html/
+docs/latex/
 

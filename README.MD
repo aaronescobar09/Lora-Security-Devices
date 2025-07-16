@@ -1,84 +1,259 @@
-<h1 align = "center">✨ LilyGO T-Deck  ✨</h1>
+# LoRa-Security-Keypad
 
-## **English | [中文](README_CN.MD)**
+> **LoRa-based security system keypad** - T-Deck Plus central arming/disarming interface for distributed security networks
 
-## News:
+## 🛒 Hardware Variants
 
-1. T-Deck-Plus has assigned the pins on the **Grove** interface to the GPS module, so the **Grove** interface of T-Deck-Plus cannot be used.
-2. T-Deck updated [TFT_eSPI ST7789 initialization sequence](https://github.com/Xinyuan-LilyGO/T-Deck/commit/6adb8884c689f174c29a6d7172a0daa367a582eb) on 20240726. Currently, the changes have not been pushed to the TFT_eSPI upstream branch. If you find that the screen display is incorrect during use, please check whether this is consistent with the initialization sequence in the warehouse.
+The T-Deck Plus comes in several frequency variants:
+- **H737-A**: 915MHz with built-in antenna
+- **H737-03**: 915MHz with external antenna
+- **H736-A**: 868MHz with built-in antenna  
+- **H736-03**: 868MHz with external antenna
+- **H755-A**: 433MHz with external antenna
 
-## 1️⃣ Examples preview
+*Choose the appropriate frequency variant based on your region's regulations and range requirements.*
 
-````
-examples 
-├─Keyboard_ESP32C3       # ESP32C3 keyboard I2C slave
-├─Keyboard_T_Deck_Master # T-Deck read from keyboard
-├─LoRaWAN_Starter        # LoRaWAN example
-├─Microphone             # Noise detection  
-├─Touchpad               # Read touch coordinates 
-├─GPSShield              # GPS Shield example
-├─lvgl_example           # lvgl example
-└─UnitTest               # Factory hardware unit testing           
+## 📋 Technical Specificationsce with advanced UI and communication capabilities.
 
-````
+**Developed by Aaron Escobar**
 
-## 2️⃣ Quick Start
+## 🎯 Project Overview
 
-### PlatformIO
+The **LoRa-Security-Keypad** transforms the LilyGO T-Deck Plus into a sophisticated **security system arming keypad** that controls a distributed LoRa network of field sensors and deterrent devices. This project provides the central control interface for wireless security installations requiring long-range, reliable connectivity.
 
-1. Install [VisualStudioCode](https://code.visualstudio.com/) and [Python](https://www.python.org/)
-2. Search for the `PlatformIO` plugin in the `VisualStudioCode` extension and install it.
-3. After the installation is complete, you need to restart `VisualStudioCode`
-4. After restarting `VisualStudioCode`, select `File` in the upper left corner of `VisualStudioCode` -> `Open Folder` -> select the `T-Deck` directory
-5. Click on the `platformio.ini` file, and in the `platformio` column, cancel the sample line that needs to be used, please make sure that only one line is valid
-6. Click the (✔) symbol in the lower left corner to compile
-7. Connect the board to the computer USB
-8. Click (→) to upload firmware
-9. Click (plug symbol) to monitor serial output
+**Based on T-Deck Plus:** Upgraded hardware with built-in GPS module and 2000mAh battery for portable security control.
 
-Optional:
+## ✨ Key Features
 
-You can upload the assets contents for the speaker demo, using the "Upload Filesystem Image" on PlatformIO menu.
+### Hardware Support
+- **ESP32-S3FN16R8** - Dual-core LX7 microprocessor, 240MHz
+- **Memory** - 16MB Flash, 8MB PSRAM
+- **2.8" IPS LCD Display** - ST7789 SPI Interface (320x240, full viewing angle)
+- **Physical Keyboard** - ESP32-C3 based with trackball navigation
+- **LoRa Communication** - SX1262 transceiver (+22dBm, 433/868/915MHz)
+- **Connectivity** - 2.4GHz Wi-Fi & Bluetooth 5.0 (LE)
+- **Audio System** - I2S microphone and built-in speaker
+- **GPS Module** - Built-in positioning (L76K/UBlox-M10Q)
+- **Storage** - MicroSD card slot
+- **Battery** - Built-in 2000mAh rechargeable battery
+- **Charging** - USB-C with battery monitoring (IO04)
 
-### ArduinoIDE
+### Software Features
+- **Security Control Interface** with CWS branding and LVGL graphics
+- **Distributed LoRa Network** - Central control of field sensors and deterrents
+- **Arming/Disarming Interface** - Traditional keypad functionality with modern UI
+- **Zone Monitoring** - Real-time status of distributed security sensors
+- **Performance Optimized** - Ultra-smooth scrolling and responsive touch
+- **Comprehensive Testing** - Built-in hardware diagnostics
+- **Audio Feedback** - Voice prompts and security alerts
+- **Real-time Communication** - LoRa coordination with field devices
+- **Power Management** - Battery monitoring for reliable security operation
+- **Development Support** - Arduino, PlatformIO, and MicroPython compatible
 
-1. Install [Arduino IDE](https://www.arduino.cc/en/software)
-2. In Arduino Preferences, on the Settings tab, enter the `https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json` URL in the `Additional boards manager URLs` input box. **Please pay attention to the version. The test phase is using 2.0.14. It is not certain that versions above 2.0.14 can run. When the operation is abnormal, please downgrade to a version below 2.0.14.** , As of 2024/08/02, TFT_eSPI does not work on versions higher than 2.0.14, see [TFT_eSPI/issue3329](https://github.com/Bodmer/TFT_eSPI/issues/3329)
-3. Copy all the folders in the `T-Deck/lib` directory to `<C:\Users\UserName\Documents\Arduino\libraries>`. If there is no `libraries` directory, please create a new one. Please note that you are not copying the `lib` directory, but copying the folders in the lib directory
-4. Open ArduinoIDE  ,`Tools` , Look at the picture to choose
-    | T-Deck(ESP32S3)      | T-Keyboard(ESP32C3)  |
-    | -------------------- | -------------------- |
-    | ![s3](images/s3.jpg) | ![c3](images/c3.jpg) |
-5. Insert USB into the PC and click Upload <If the upload fails, keep pressing the BOOT button, click RST, and then click Upload. When the upload is complete, click RST to exit the download mode>
+## 🚀 Quick Start
 
-## 3️⃣ Tips:
+### Prerequisites
+- [PlatformIO](https://platformio.org/) installed in VS Code
+- [Git](https://git-scm.com/) for version control
+- USB-C cable for T-Deck Plus connection
+- T-Deck Plus device (available at [LilyGO Store](https://lilygo.cc/products/t-deck-plus-1))
 
-1. If a microphone is used, the GPIOO button cannot be used
-2. If the sketch cannot be uploaded, then you need to press down the middle of the trackball, and then insert the USB, this means the chip is in the download mode, and then click to upload the sketch.
-3. T-Keyboard the programming and burning interface of ESP32C3 is located at the 6Pin header on the side of the RST button, and the order starts from the top of the RST button, which are TX,RX,BOOT,RST,GND,VCC, You need to connect USB TO TTL externally to burn the keyboard firmware. For TTL without automatic download circuit, before powering on, short-circuit the BOOT Pin and GND, and then power on. At this time, T-Keyboard will enter the download mode. After the burning is completed, you need to disconnect GND and BOOT before running the program.
+### Environment Setup
+1. Set WiFi credentials as environment variables:
+   ```bash
+   # Windows (PowerShell)
+   $env:PIO_WIFI_SSID="YourWiFiName"
+   $env:PIO_WIFI_PASSWORD="YourWiFiPassword"
+   
+   # Linux/Mac
+   export PIO_WIFI_SSID="YourWiFiName"
+   export PIO_WIFI_PASSWORD="YourWiFiPassword"
+   ```
 
-   ![c3_boot](images/c3_boot.jpg)
+### Building and Flashing
+1. Open project in VS Code with PlatformIO
+2. Select the target environment:
+   - `T-Deck` - Standard performance
+   - `T-Deck-fast` - High performance (production)
+   - `T-Deck-test` - Testing with Unity framework
+3. Build and upload using PlatformIO toolbar
 
-4. T-Deck can't upload any sketch，Please enter the upload mode manually.
-   1. Connect the board via the USB cable
-   2. Press and hold the BOOT button , While still pressing the BOOT(On the trackball above the keyboard, press down) button
-   3. Press RST button
-   4. Release the RST button
-   5. Release the BOOT button
-   6. Upload sketch
-   7. If you still cannot upload the sketch successfully according to the above method, please check whether the resistor in this [issue62](https://github.com/Xinyuan-LilyGO/T-Deck/issues/62) exists. Please remove it and test again.
+### Application Selection
+Switch between applications by editing `platformio.ini`:
+```ini
+;; Applications - only one is valid
+src_dir = applications/MainKeypad        ; Main security keypad interface
+; src_dir = applications/Touchpad        ; Touch testing
+; src_dir = applications/Microphone      ; Audio testing
+; src_dir = applications/LoRaWAN_Starter ; LoRa communication testing
+```
 
-5. fatal error: esp_vad.h: No such file or directory
-   1. See [issus](https://github.com/Xinyuan-LilyGO/T-Deck/issues/90#issuecomment-2980116659)
+## 📁 Project Structure
 
+```
+LoRa-Security-Keypad/
+├── applications/          # Security control applications
+│   ├── MainKeypad/       # Main security keypad interface (active)
+│   ├── Touchpad/         # Touch input testing
+│   ├── Microphone/       # Audio testing
+│   └── ...               # Other specialized security apps
+├── boards/               # T-Deck board definitions
+├── data/                 # Audio files and security assets
+├── docs/                 # Documentation and guides
+├── lib/                  # Required libraries
+├── schematic/            # Hardware schematics
+├── scripts/              # Build and upload utilities
+├── shell/                # 3D models and enclosure
+├── test/                 # Unit tests
+└── platformio.ini        # Build configuration
+```
 
-## 4️⃣ Where to buy:
+## � Technical Specifications
 
-1. [AliExpress](https://www.aliexpress.com/item/1005005692235592.html)
-2. [LilyGo Store](https://www.lilygo.cc/products/t-deck)
+| Component | Specification |
+|-----------|---------------|
+| **MCU** | ESP32-S3FN16R8 Dual-core LX7 microprocessor |
+| **Flash Memory** | 16MB |
+| **PSRAM** | 8MB |
+| **Display** | 2.8" ST7789 SPI Interface IPS LCD (320x240, full viewing angle) |
+| **Wireless** | 2.4 GHz Wi-Fi & Bluetooth 5.0 (LE) |
+| **LoRa** | SX1262 transceiver, +22dBm, 433/868/915MHz |
+| **Battery** | Built-in 2000mAh rechargeable (ADC PIN: IO04) |
+| **Onboard Features** | GPS, MicroSD Card, Microphone, Speaker |
+| **Connectivity** | USB-C charging/programming |
+| **Development** | Arduino, PlatformIO-IDE, MicroPython compatible |
 
+## �🔧 Configuration
 
+### Performance Environments
 
-## 5️⃣ Pins:
+#### T-Deck (Standard)
+- Balanced performance and power consumption
+- Full debugging enabled
+- Suitable for development
 
-See [utilities.h](./examples//UnitTest//utilities.h)
+#### T-Deck-fast (Production)
+- Maximum performance optimizations
+- Reduced debugging overhead
+- Optimized for deployment
+
+#### T-Deck-test (Testing)
+- Unity test framework enabled
+- Comprehensive testing capabilities
+- Debug-friendly configuration
+
+### Build Flags
+The project includes extensive optimizations:
+- **CPU**: ESP32-S3FN16R8 Dual-core LX7 at 240MHz maximum frequency
+- **Memory**: 16MB Flash, 8MB PSRAM optimization enabled
+- **Graphics**: ST7789 IPS display with 16-bit color depth for speed
+- **Radio**: SX1262 LoRa (+22dBm) with unused modules excluded for size
+- **Power**: 2000mAh battery monitoring and management
+- **Debugging**: Configurable levels for development vs production
+
+## 🎮 Usage
+
+### Main Interface
+1. **Power On** - Device shows CWS security system splash screen
+2. **Navigation** - Use touchscreen or physical controls for system management
+3. **Arming/Disarming** - Central security system control interface
+4. **Zone Status** - Monitor distributed field sensors and deterrents
+5. **Settings** - Configure LoRa network, display, and security features
+
+### Physical Controls
+- **Trackball** - Navigate security interface
+- **Directional Keys** - Menu navigation and zone selection
+- **Click Button** - Arm/disarm and activate functions
+- **Keyboard** - Security code input and system commands
+
+### Touch Interface
+- **Tap** - Select zones and security functions
+- **Swipe** - Scroll through security status lists
+- **Long Press** - Access advanced security settings
+- **Pinch** - Zoom on zone maps (where applicable)
+
+## 📡 Communication
+
+### WiFi
+- Automatic connection on startup
+- NTP time synchronization
+- Web-based configuration
+
+### LoRa Network
+- **Central Command** - Coordinates distributed field sensors (T3-S3, T-Beam)
+- **Long-range Communication** - SX1262 transceiver with enhanced range
+- **Power Output**: +22dBm maximum transmission power
+- **Frequency Options**: 433MHz/868MHz/915MHz (region dependent)
+- **External Antenna**: Optional for enhanced coverage area
+- **Field Sensor Network** - Real-time communication with security nodes
+- **Zone Monitoring** - Status updates from perimeter sensors
+- **Deterrent Control** - Remote activation of security devices
+
+### Audio
+- **Security Alerts** - Voice prompts and alarm notifications
+- **System Status** - Audio feedback for arming/disarming
+- **Zone Alerts** - Audio notifications for sensor triggers
+- **Microphone Input** - Voice command processing (future feature)
+
+## 🛠️ Development
+
+### Adding New Applications
+1. Create folder in `applications/`
+2. Add `.ino` file with security control logic
+3. Update `platformio.ini` with new path
+4. Include required headers and security utilities
+
+### Custom Hardware
+- Modify `boards/T-Deck.json` for security hardware changes
+- Update pin definitions in utilities.h for sensor interfaces
+- Adjust build flags for security-specific optimizations
+
+### Testing
+```bash
+# Run unit tests
+pio test
+
+# Performance testing
+scripts/test_performance.bat
+
+# Upload with monitoring
+scripts/upload_script.ps1
+```
+
+## 📚 Documentation
+
+- **[Performance Guide](docs/PERFORMANCE_GUIDE.md)** - Optimization techniques
+- **[Performance Testing](docs/PERFORMANCE_TEST.md)** - Benchmarking procedures
+- **[Upload Troubleshooting](docs/UPLOAD_TROUBLESHOOTING.md)** - Common issues and solutions
+- **[Enhancements](docs/README_ENHANCEMENTS.md)** - Feature additions and improvements
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+## 📄 License
+
+This project is based on the LilyGO T-Deck platform. Please refer to original licensing terms.
+
+## 🙏 Acknowledgments
+
+- **[LilyGO®](https://lilygo.cc/)** - For the excellent T-Deck Plus hardware platform
+- **[LVGL Team](https://lvgl.io/)** - For the powerful graphics library
+- **[PlatformIO](https://platformio.org/)** - For the excellent development environment
+- **[ESP32 Community](https://esp32.com/)** - For extensive documentation and support
+- **[RadioLib](https://github.com/jgromes/RadioLib)** - For LoRa communication capabilities
+
+## 📞 Support & Resources
+
+- **Product Information**: [T-Deck Plus GitHub](https://github.com/Xinyuan-LilyGO/T-Deck)
+- **Technical Support**: [LilyGO GitHub Community](https://github.com/Xinyuan-LilyGo)
+- **Hardware Purchase**: [LilyGO Store](https://lilygo.cc/products/t-deck-plus-1)
+- **Documentation**: [Project Docs](docs/)
+
+---
+
+**Built with ❤️ for distributed LoRa security applications**

@@ -77,11 +77,11 @@
    HAL SETTINGS
  *====================*/
 
-/*Default display refresh period. LVG will redraw changed areas with this period time*/
-#define LV_DISP_DEF_REFR_PERIOD 16      /*[ms]*/
+/*Default display refresh period. LVG will redraw changed areas with this period time - optimized for smoothness*/
+#define LV_DISP_DEF_REFR_PERIOD 8       /*[ms] - reduced to 8ms for ~125 FPS super smooth scrolling*/
 
-/*Input device read period in milliseconds*/
-#define LV_INDEV_DEF_READ_PERIOD 30     /*[ms]*/
+/*Input device read period in milliseconds - reduced for better mouse responsiveness*/
+#define LV_INDEV_DEF_READ_PERIOD 5      /*[ms] - reduced to 5ms for ultra-responsive scrolling input*/
 
 /*Use a custom tick source that tells the elapsed time in milliseconds.
  *It removes the need to manually update the tick with `lv_tick_inc()`)*/
@@ -546,8 +546,8 @@ e.g. "stm32f769xx.h" or "stm32f429xx.h"*/
 /*1: Enable grow on press*/
 #define LV_THEME_DEFAULT_GROW 1
 
-/*Default transition time in [ms]*/
-#define LV_THEME_DEFAULT_TRANSITION_TIME 80
+/*Default transition time in [ms] - optimized for smooth scrolling*/
+#define LV_THEME_DEFAULT_TRANSITION_TIME 60  /*Reduced from 80ms to 60ms for smoother animations*/
 #endif /*LV_USE_THEME_DEFAULT*/
 
 /*A very simple theme that is a good starting point for a custom theme*/
