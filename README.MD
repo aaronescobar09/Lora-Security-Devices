@@ -15,8 +15,6 @@ The T-Deck Plus comes in several frequency variants:
 
 ## 📋 Technical Specificationsce with advanced UI and communication capabilities.
 
-**Developed by Aaron Escobar**
-
 ## 🎯 Project Overview
 
 The **LoRa-Security-Keypad** transforms the LilyGO T-Deck Plus into a sophisticated **security system arming keypad** that controls a distributed LoRa network of field sensors and deterrent devices. This project provides the central control interface for wireless security installations requiring long-range, reliable connectivity.
